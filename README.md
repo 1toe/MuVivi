@@ -2,9 +2,9 @@
 
 > A nostalgic, browser-based video editor inspired by Windows Movie Maker 2012
 
-[![Status](https://img.shields.io/badge/Status-In%20Development-yellow)](https://github.com/1toe/movie-maker-2025)
-[![Progress](https://img.shields.io/badge/Progress-80%25-green)](./CHANGELOG.md)
-[![RFCs](https://img.shields.io/badge/RFCs-12%2F15%20Complete-blue)](./CHANGELOG.md)
+[![Status](https://img.shields.io/badge/Status-MVP%20Ready-brightgreen)](https://github.com/1toe/movie-maker-2025)
+[![Progress](https://img.shields.io/badge/Progress-73%25-green)](./CHANGELOG.md)
+[![RFCs](https://img.shields.io/badge/RFCs-11%2F15%20Complete-blue)](./CHANGELOG.md)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
 ---

@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react';
 import { usePlayer } from '../../hooks/usePlayer';
 import { useProject } from '../../hooks/useProject';
+import { EffectsRenderer } from '../../utils/effectsRenderer';
+import { TextRenderer } from '../../utils/textRenderer';
 import styles from './Player.module.css';
 
 export function Player() {
@@ -47,7 +49,18 @@ export function Player() {
       
       const drawFrame = () => {
         if (video.readyState >= 2) {
+          // Draw video frame
           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          
+          // Apply visual effects
+          if (clip.effects && clip.effects.length > 0) {
+            EffectsRenderer.applyEffects(ctx, clip.effects, canvas.width, canvas.height);
+          }
+          
+          // Render text overlays
+          if (clip.texts && clip.texts.length > 0) {
+            TextRenderer.renderTexts(ctx, clip.texts, relativeTime, canvas.width, canvas.height);
+          }
         }
       };
 
@@ -57,7 +70,18 @@ export function Player() {
       const img = new Image();
       img.src = clip.url;
       img.onload = () => {
+        // Draw image
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        // Apply visual effects
+        if (clip.effects && clip.effects.length > 0) {
+          EffectsRenderer.applyEffects(ctx, clip.effects, canvas.width, canvas.height);
+        }
+        
+        // Render text overlays
+        if (clip.texts && clip.texts.length > 0) {
+          TextRenderer.renderTexts(ctx, clip.texts, relativeTime, canvas.width, canvas.height);
+        }
       };
     }
   }, [currentTime, getCurrentClipInfo]);
