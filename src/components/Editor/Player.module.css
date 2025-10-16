@@ -5,6 +5,7 @@
   height: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .videoContainer {
@@ -59,6 +60,7 @@
   justify-content: space-between;
   gap: var(--spacing-md);
   padding: var(--spacing-md) 0;
+  overflow: hidden;
 }
 
 .mainControls {
@@ -104,9 +106,11 @@
   height: 8px;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-full);
-  overflow: visible;
+  overflow: hidden;
   cursor: pointer;
   transition: height var(--transition-fast);
+  padding: 4px 0;
+  margin: -4px 0;
 }
 
 .seekBar:hover {
@@ -127,7 +131,8 @@
 .seekBarHandle {
   position: absolute;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
+  margin-left: -7px;
   width: 14px;
   height: 14px;
   background-color: white;
@@ -136,6 +141,7 @@
   opacity: 0;
   transition: opacity var(--transition-fast);
   pointer-events: none;
+  z-index: 1;
 }
 
 .seekBar:hover .seekBarHandle {
