@@ -1,4 +1,4 @@
-A collection of reusable AI prompts to streamline your product development workflow. These prompts can be copied and pasted into any AI assistant (like Cursor) to automate common tasks in your product development process.
+A collection of reusable AI prompts to streamline your product development workflow. These prompts can be copied and pasted into any AI assistant  to automate common tasks in your product development process.
 
 
 ## Available Prompts
