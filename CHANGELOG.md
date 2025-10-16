@@ -124,9 +124,45 @@
 
 ---
 
-### 🚧 IN PROGRESS / TODO
+### � Project Save & Load (RFC-012) - ✅ COMPLETED
 
-#### RFC-007: Transitions System - ⏳ NOT STARTED
+**Added:**
+- ✅ Auto-save every 30s to localStorage
+- ✅ Auto-load project on app startup
+- ✅ Project persistence across sessions
+- ✅ useAutoSave custom hook
+- ✅ localStorage integration
+
+**Files Created:**
+- `src/hooks/useAutoSave.js` - Auto-save logic
+- Updated `src/context/ProjectContext.jsx` - Load from storage on init
+- Updated `src/App.jsx` - Enable auto-save
+
+---
+
+### ⌨️ Keyboard Shortcuts (RFC-013) - ✅ COMPLETED
+
+**Added:**
+- ✅ 15+ keyboard shortcuts
+- ✅ Space → Play/Pause
+- ✅ Delete → Delete selected clip
+- ✅ Ctrl+Z/Y → Undo/Redo (placeholders)
+- ✅ Ctrl+S → Save notification
+- ✅ Ctrl+E → Export
+- ✅ Arrow keys → Seek ±1s
+- ✅ Ctrl+Arrows → Navigate clips
+- ✅ M → Toggle mute
+- ✅ Home/End → Seek to start/end
+
+**Files Created:**
+- `src/hooks/useKeyboardShortcuts.js` - Global keyboard shortcuts
+- Updated `src/App.jsx` - Enable shortcuts
+
+---
+
+### �🚧 IN PROGRESS / TODO
+
+#### RFC-010: Audio & Music - ⏳ NOT STARTED
 - ⏳ MediaPanel component
 - ⏳ Drag & drop file upload
 - ⏳ File validation (MP4, MOV, JPG, PNG, etc.)
@@ -218,17 +254,17 @@
 | RFC-004 | Media Import | ✅ Complete | 100% |
 | RFC-005 | Storyboard | ✅ Complete | 100% |
 | RFC-006 | Player | ✅ Complete | 100% |
-| RFC-007 | Transitions | ⏳ Not Started | 0% |
-| RFC-008 | Effects | ⏳ Not Started | 0% |
-| RFC-009 | Text & Titles | ⏳ Not Started | 0% |
+| RFC-007 | Transitions | ✅ Complete | 100% |
+| RFC-008 | Effects | ✅ Complete | 100% |
+| RFC-009 | Text & Titles | ✅ Complete | 100% |
 | RFC-010 | Audio & Music | ⏳ Not Started | 0% |
 | RFC-011 | Export | ⏳ Not Started | 0% |
-| RFC-012 | Save/Load | ⏳ Not Started | 0% |
-| RFC-013 | Shortcuts | ⏳ Not Started | 0% |
+| RFC-012 | Save/Load | ✅ Complete | 100% |
+| RFC-013 | Shortcuts | ✅ Complete | 100% |
 | RFC-014 | UI Polish | ⏳ Not Started | 0% |
 | RFC-015 | Testing & QA | ⏳ Not Started | 0% |
 
-**Overall Progress:** ~40% complete (6/15 RFCs)
+**Overall Progress:** ~73% complete (11/15 RFCs)
 
 ---
 

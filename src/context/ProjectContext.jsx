@@ -1,8 +1,29 @@
 import { createContext, useContext, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+// Load from localStorage on init
+function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem('movie-maker-2025-project');
+    if (saved) {
+      const data = JSON.parse(saved);
+      return {
+        projectName: data.projectName || 'Untitled Project',
+        clips: data.clips || [],
+        selectedClipId: null,
+        backgroundMusic: data.backgroundMusic || null,
+        duration: 0,
+        currentTime: 0,
+      };
+    }
+  } catch (error) {
+    console.error('Failed to load project from localStorage:', error);
+  }
+  return null;
+}
+
 // Initial State
-const initialState = {
+const initialState = loadFromLocalStorage() || {
   projectName: 'Untitled Project',
   clips: [],
   selectedClipId: null,
