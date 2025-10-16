@@ -11,10 +11,23 @@ const TEXT_TEMPLATES = [
   { id: 'credit', name: 'Credit', fontSize: 18, position: 'bottom-right' },
 ];
 
+const POSITION_PRESETS = [
+  { id: 'center', name: 'Center' },
+  { id: 'top', name: 'Top' },
+  { id: 'bottom', name: 'Bottom' },
+  { id: 'top-left', name: 'Top Left' },
+  { id: 'top-right', name: 'Top Right' },
+  { id: 'bottom-left', name: 'Bottom Left' },
+  { id: 'bottom-right', name: 'Bottom Right' },
+  { id: 'left', name: 'Left' },
+  { id: 'right', name: 'Right' },
+];
+
 export function TextPanel() {
   const { state, dispatch } = useProject();
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [textContent, setTextContent] = useState('');
+  const [editingTextId, setEditingTextId] = useState(null);
 
   const selectedClip = state.clips.find((clip) => clip.id === state.selectedClipId);
 
@@ -36,6 +49,38 @@ export function TextPanel() {
 
     setTextContent('');
     setSelectedTemplate(null);
+  };
+
+  const handleUpdateTextPosition = (textId, newPosition) => {
+    dispatch({
+      type: ActionTypes.UPDATE_TEXT,
+      payload: {
+        clipId: selectedClip.id,
+        textId: textId,
+        updates: { position: newPosition },
+      },
+    });
+  };
+
+  const handleUpdateTextContent = (textId, newContent) => {
+    dispatch({
+      type: ActionTypes.UPDATE_TEXT,
+      payload: {
+        clipId: selectedClip.id,
+        textId: textId,
+        updates: { content: newContent },
+      },
+    });
+  };
+
+  const handleRemoveText = (textId) => {
+    dispatch({
+      type: ActionTypes.REMOVE_TEXT,
+      payload: { clipId: selectedClip.id, textId },
+    });
+    if (editingTextId === textId) {
+      setEditingTextId(null);
+    }
   };
 
   return (
@@ -100,18 +145,57 @@ export function TextPanel() {
               <div className={styles.textsList}>
                 {selectedClip.texts.map((text) => (
                   <div key={text.id} className={styles.textItem}>
-                    <p className={styles.textContent}>{text.content}</p>
-                    <button
-                      className={styles.removeButton}
-                      onClick={() =>
-                        dispatch({
-                          type: ActionTypes.REMOVE_TEXT,
-                          payload: { clipId: selectedClip.id, textId: text.id },
-                        })
-                      }
-                    >
-                      ×
-                    </button>
+                    {editingTextId === text.id ? (
+                      <div className={styles.textEdit}>
+                        <input
+                          type="text"
+                          className={styles.textEditInput}
+                          value={text.content}
+                          onChange={(e) => handleUpdateTextContent(text.id, e.target.value)}
+                          autoFocus
+                        />
+                        <select
+                          className={styles.positionSelect}
+                          value={text.position}
+                          onChange={(e) => handleUpdateTextPosition(text.id, e.target.value)}
+                        >
+                          {POSITION_PRESETS.map((preset) => (
+                            <option key={preset.id} value={preset.id}>
+                              {preset.name}
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          className={styles.doneButton}
+                          onClick={() => setEditingTextId(null)}
+                        >
+                          ✓
+                        </button>
+                      </div>
+                    ) : (
+                      <>
+                        <div className={styles.textInfo}>
+                          <p className={styles.textContent}>{text.content}</p>
+                          <p className={styles.textPosition}>Position: {text.position}</p>
+                        </div>
+                        <div className={styles.textActions}>
+                          <button
+                            className={styles.editButton}
+                            onClick={() => setEditingTextId(text.id)}
+                            title="Edit text"
+                          >
+                            ✎
+                          </button>
+                          <button
+                            className={styles.removeButton}
+                            onClick={() => handleRemoveText(text.id)}
+                            title="Remove text"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>

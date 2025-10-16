@@ -31,26 +31,51 @@ export function Player() {
     if (!canvas || !video) return;
 
     const ctx = canvas.getContext('2d');
-    const clipInfo = getCurrentClipInfo();
+    
+    const renderFrame = () => {
+      const clipInfo = getCurrentClipInfo();
 
-    if (!clipInfo) {
-      // Clear canvas if no clip
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      return;
-    }
+      if (!clipInfo) {
+        // Clear canvas if no clip
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        return;
+      }
 
-    const { clip, relativeTime } = clipInfo;
+      const { clip, relativeTime } = clipInfo;
 
-    // Load and render video/image
-    if (clip.type === 'video') {
-      video.src = clip.url;
-      video.currentTime = relativeTime;
-      
-      const drawFrame = () => {
-        if (video.readyState >= 2) {
-          // Draw video frame
-          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      // Load and render video/image
+      if (clip.type === 'video') {
+        if (video.src !== clip.url) {
+          video.src = clip.url;
+        }
+        video.currentTime = relativeTime;
+        
+        const drawFrame = () => {
+          if (video.readyState >= 2) {
+            // Draw video frame
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            // Apply visual effects
+            if (clip.effects && clip.effects.length > 0) {
+              EffectsRenderer.applyEffects(ctx, clip.effects, canvas.width, canvas.height);
+            }
+            
+            // Render text overlays
+            if (clip.texts && clip.texts.length > 0) {
+              TextRenderer.renderTexts(ctx, clip.texts, relativeTime, canvas.width, canvas.height);
+            }
+          }
+        };
+
+        video.addEventListener('seeked', drawFrame);
+        return () => video.removeEventListener('seeked', drawFrame);
+      } else if (clip.type === 'image') {
+        const img = new Image();
+        img.src = clip.url;
+        img.onload = () => {
+          // Draw image
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           
           // Apply visual effects
           if (clip.effects && clip.effects.length > 0) {
@@ -61,30 +86,18 @@ export function Player() {
           if (clip.texts && clip.texts.length > 0) {
             TextRenderer.renderTexts(ctx, clip.texts, relativeTime, canvas.width, canvas.height);
           }
-        }
-      };
+        };
+      }
+    };
 
-      video.addEventListener('seeked', drawFrame);
-      return () => video.removeEventListener('seeked', drawFrame);
-    } else if (clip.type === 'image') {
-      const img = new Image();
-      img.src = clip.url;
-      img.onload = () => {
-        // Draw image
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        
-        // Apply visual effects
-        if (clip.effects && clip.effects.length > 0) {
-          EffectsRenderer.applyEffects(ctx, clip.effects, canvas.width, canvas.height);
-        }
-        
-        // Render text overlays
-        if (clip.texts && clip.texts.length > 0) {
-          TextRenderer.renderTexts(ctx, clip.texts, relativeTime, canvas.width, canvas.height);
-        }
-      };
+    renderFrame();
+    
+    // Re-render on playback
+    if (isPlaying) {
+      const intervalId = setInterval(renderFrame, 1000 / 30); // 30 FPS
+      return () => clearInterval(intervalId);
     }
-  }, [currentTime, getCurrentClipInfo]);
+  }, [currentTime, isPlaying, getCurrentClipInfo]);
 
   // Set volume on video element
   useEffect(() => {

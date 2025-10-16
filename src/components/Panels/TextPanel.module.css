@@ -124,28 +124,69 @@
 
 .textItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: var(--spacing-sm);
-  padding: var(--spacing-sm);
+  padding: var(--spacing-md);
   background-color: white;
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.textItem:hover {
+  border-color: var(--color-border-medium);
+}
+
+.textInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
 }
 
 .textContent {
-  flex: 1;
   font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text-primary);
   margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  word-break: break-word;
+}
+
+.textPosition {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+.textActions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.editButton {
+  width: 28px;
+  height: 28px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editButton:hover {
+  background-color: var(--color-primary-dark);
+  transform: scale(1.1);
 }
 
 .removeButton {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   background-color: var(--color-error);
   color: white;
   border: none;
@@ -162,6 +203,55 @@
 
 .removeButton:hover {
   transform: scale(1.1);
+}
+
+/* Text Edit Mode */
+.textEdit {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.textEditInput {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  outline: none;
+}
+
+.positionSelect {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  background-color: white;
+  cursor: pointer;
+}
+
+.positionSelect:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.doneButton {
+  padding: var(--spacing-sm);
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.doneButton:hover {
+  background-color: #059669;
+  transform: scale(1.02);
 }
 
 /* Scrollbar */
