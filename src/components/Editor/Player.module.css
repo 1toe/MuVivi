@@ -15,14 +15,27 @@
   background-color: #000000;
   border-radius: var(--radius-md);
   overflow: hidden;
+  position: relative;
+}
+
+.canvas {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.video {
+  display: none;
 }
 
 .placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: var(--spacing-xl);
 }
 
 .placeholderIcon {
@@ -34,11 +47,25 @@
   margin: 0;
 }
 
+.placeholderSubtext {
+  font-size: var(--font-size-sm);
+  margin: 0;
+  opacity: 0.7;
+}
+
 .controls {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--spacing-md);
   padding: var(--spacing-md) 0;
+}
+
+.mainControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
 }
 
 .controlButton {
@@ -54,10 +81,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .controlButton:hover:not(:disabled) {
   background-color: var(--color-primary-dark);
+  transform: scale(1.1);
+}
+
+.controlButton:active:not(:disabled) {
   transform: scale(1.05);
 }
 
@@ -67,24 +99,126 @@
 }
 
 .seekBar {
+  position: relative;
   flex: 1;
-  height: 6px;
+  height: 8px;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-full);
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer;
+  transition: height var(--transition-fast);
+}
+
+.seekBar:hover {
+  height: 10px;
 }
 
 .seekBarProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   background-color: var(--color-primary);
+  border-radius: var(--radius-full);
   transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+.seekBarHandle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background-color: white;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.seekBar:hover .seekBarHandle {
+  opacity: 1;
 }
 
 .timecode {
   font-size: var(--font-size-sm);
   font-family: monospace;
   color: white;
-  min-width: 100px;
+  min-width: 110px;
   text-align: right;
+  flex-shrink: 0;
+}
+
+.volumeControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.volumeButton {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volumeButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.volumeSlider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 0%,
+    var(--color-primary) var(--value, 100%),
+    rgba(255, 255, 255, 0.2) var(--value, 100%),
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  border-radius: var(--radius-full);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  border: 2px solid var(--color-primary);
+  transition: transform var(--transition-fast);
+}
+
+.volumeSlider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  border: 2px solid var(--color-primary);
+  transition: transform var(--transition-fast);
+}
+
+.volumeSlider::-moz-range-thumb:hover {
+  transform: scale(1.2);
 }

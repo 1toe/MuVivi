@@ -86,9 +86,47 @@
 
 ---
 
+### 🎬 Storyboard & Timeline (RFC-005) - ✅ COMPLETED
+
+**Added:**
+- ✅ Clip component with drag & drop support
+- ✅ Storyboard timeline with horizontal scroll
+- ✅ Drag clips from media library to timeline
+- ✅ Reorder clips via drag & drop
+- ✅ Delete clips from timeline
+- ✅ Clip selection highlighting
+- ✅ Visual indicators (transitions, effects, texts)
+- ✅ Timeline duration display
+
+**Files Created:**
+- `src/components/Editor/Clip.jsx + .module.css` - Individual clip component
+- Updated `src/components/Editor/Storyboard.jsx` - Full timeline implementation
+- Updated `src/components/Panels/MediaPanel.jsx` - Draggable media items
+
+---
+
+### ▶️ Player & Preview (RFC-006) - ✅ COMPLETED
+
+**Added:**
+- ✅ Video player with HTML5 canvas rendering
+- ✅ Play/pause/stop controls
+- ✅ Seek bar with progress tracking
+- ✅ Volume control with slider
+- ✅ Mute/unmute toggle
+- ✅ Timecode display (current/total)
+- ✅ Playback engine with requestAnimationFrame
+- ✅ usePlayer custom hook
+
+**Files Created:**
+- `src/hooks/usePlayer.js` - Player logic and state management
+- Updated `src/components/Editor/Player.jsx` - Full player implementation
+- Updated `src/components/Editor/Player.module.css` - Enhanced player styles
+
+---
+
 ### 🚧 IN PROGRESS / TODO
 
-#### RFC-004: Media Import & Management - ⏳ NOT STARTED
+#### RFC-007: Transitions System - ⏳ NOT STARTED
 - ⏳ MediaPanel component
 - ⏳ Drag & drop file upload
 - ⏳ File validation (MP4, MOV, JPG, PNG, etc.)
@@ -177,9 +215,9 @@
 | RFC-001 | Project Setup | ✅ Complete | 100% |
 | RFC-002 | Component Architecture | ✅ Complete | 100% |
 | RFC-003 | Layout & Ribbon | ✅ Complete | 100% |
-| RFC-004 | Media Import | ⏳ Not Started | 0% |
-| RFC-005 | Storyboard | ⏳ Not Started | 0% |
-| RFC-006 | Player | ⏳ Not Started | 0% |
+| RFC-004 | Media Import | ✅ Complete | 100% |
+| RFC-005 | Storyboard | ✅ Complete | 100% |
+| RFC-006 | Player | ✅ Complete | 100% |
 | RFC-007 | Transitions | ⏳ Not Started | 0% |
 | RFC-008 | Effects | ⏳ Not Started | 0% |
 | RFC-009 | Text & Titles | ⏳ Not Started | 0% |
@@ -190,7 +228,7 @@
 | RFC-014 | UI Polish | ⏳ Not Started | 0% |
 | RFC-015 | Testing & QA | ⏳ Not Started | 0% |
 
-**Overall Progress:** ~20% complete (3/15 RFCs)
+**Overall Progress:** ~40% complete (6/15 RFCs)
 
 ---
 

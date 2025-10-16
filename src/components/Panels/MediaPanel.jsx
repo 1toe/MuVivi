@@ -51,6 +51,11 @@ export function MediaPanel() {
     });
   };
 
+  const handleMediaDragStart = (e, mediaItem) => {
+    e.dataTransfer.effectAllowed = 'copy';
+    e.dataTransfer.setData('mediaId', mediaItem.id);
+  };
+
   const formatDuration = (duration) => {
     const minutes = Math.floor(duration / 60);
     const seconds = Math.floor(duration % 60);
@@ -110,6 +115,8 @@ export function MediaPanel() {
                   state.selectedMediaId === item.id ? styles.mediaItemSelected : ''
                 }`}
                 onClick={() => handleSelectMedia(item.id)}
+                draggable
+                onDragStart={(e) => handleMediaDragStart(e, item)}
               >
                 <div className={styles.thumbnail}>
                   <img src={item.thumbnail} alt={item.name} />

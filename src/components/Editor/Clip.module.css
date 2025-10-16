@@ -1,0 +1,127 @@
+.clip {
+  position: relative;
+  width: 140px;
+  flex-shrink: 0;
+  background-color: white;
+  border: 2px solid var(--color-border-medium);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.clip:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.clipSelected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 114, 189, 0.3);
+}
+
+.clip:active {
+  cursor: grabbing;
+}
+
+.thumbnail {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.transitionBadge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background-color: rgba(255, 215, 0, 0.9);
+  color: #333;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.clipInfo {
+  padding: var(--spacing-sm);
+}
+
+.clipName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clipDuration {
+  font-size: var(--font-size-xs);
+  font-family: monospace;
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+.effectsBadge {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  background-color: rgba(147, 51, 234, 0.9);
+  color: white;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.textsBadge {
+  position: absolute;
+  bottom: 4px;
+  right: 30px;
+  background-color: rgba(34, 197, 94, 0.9);
+  color: white;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.deleteButton {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(231, 76, 60, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+
+.clip:hover .deleteButton {
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  background-color: var(--color-error);
+  transform: scale(1.15);
+}

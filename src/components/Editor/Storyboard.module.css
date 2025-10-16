@@ -3,23 +3,56 @@
   flex-direction: column;
   height: 100%;
   background-color: var(--color-bg-accent);
-  padding: var(--spacing-md);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border-medium);
+}
+
+.title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info {
+  display: flex;
+  gap: var(--spacing-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.clipCount {
+  font-weight: var(--font-weight-medium);
+}
+
+.totalDuration {
+  font-family: monospace;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
 }
 
 .timeline {
   flex: 1;
-  display: flex;
-  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
   overflow-x: auto;
   overflow-y: hidden;
 }
 
 .emptyState {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
   text-align: center;
 }
 
@@ -39,6 +72,32 @@
 .emptySubtext {
   font-size: var(--font-size-sm);
   color: var(--color-text-tertiary);
+}
+
+.clipsContainer {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  height: 100%;
+}
+
+.clipWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-fast);
+}
+
+.clipWrapperDragOver {
+  padding-left: var(--spacing-lg);
+  border-left: 3px dashed var(--color-primary);
+}
+
+.clipSeparator {
+  font-size: 20px;
+  color: var(--color-text-tertiary);
+  user-select: none;
+  flex-shrink: 0;
 }
 
 /* Scrollbar */
