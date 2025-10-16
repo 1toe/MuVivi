@@ -3,7 +3,8 @@
 > A nostalgic, browser-based video editor inspired by Windows Movie Maker 2012
 
 [![Status](https://img.shields.io/badge/Status-In%20Development-yellow)](https://github.com/1toe/movie-maker-2025)
-[![Progress](https://img.shields.io/badge/Progress-8%25-orange)](./CHANGELOG.md)
+[![Progress](https://img.shields.io/badge/Progress-73%25-green)](./CHANGELOG.md)
+[![RFCs](https://img.shields.io/badge/RFCs-11%2F15%20Complete-blue)](./CHANGELOG.md)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
 ---
@@ -32,16 +33,25 @@ Open [http://localhost:5173](http://localhost:5173) to view the app.
 
 A modern web application that brings the simplicity and nostalgia of Windows Movie Maker 2012 to your browser. Edit videos, add transitions, effects, text overlays, and music—all client-side with no server required.
 
-### ✨ Key Features
+### ✨ Implemented Features (73% Complete)
 
-- 🎥 **Video Editing** - Import videos, arrange clips, trim, and reorder
-- 🎨 **Visual Effects** - 8+ effects (brightness, contrast, blur, sepia, etc.)
-- ✨ **Transitions** - 6 smooth transitions (fade, wipe, slide, dissolve)
-- 📝 **Text & Titles** - Customizable text overlays with animations
-- 🎵 **Audio** - Background music with volume control
-- 💾 **Export** - WebM format (720p, 1080p) with quality settings
-- 💿 **Save/Load** - Auto-save and project files (.mmproject)
-- ⌨️ **Keyboard Shortcuts** - 15+ productivity shortcuts
+#### ✅ Core Features (100% Complete)
+- 🎥 **Media Import** - Drag & drop video, image, and audio files
+- 📊 **Timeline/Storyboard** - Visual clip arrangement with drag & drop reordering
+- ▶️ **Video Player** - Full playback controls with seek bar and volume
+- 💾 **Auto-Save** - Automatic project persistence to localStorage
+- ⌨️ **Keyboard Shortcuts** - 15+ productivity shortcuts (Space, Delete, Ctrl+Z, etc.)
+
+#### ✅ Enhancement Features (100% Complete)
+- ✨ **Transitions** - 8 transition types (fade, dissolve, wipe, slide)
+- 🎨 **Visual Effects** - 8 effects (brightness, contrast, blur, sepia, grayscale, etc.)
+- 📝 **Text & Titles** - 4 text templates with customizable content
+
+#### ⏳ Coming Soon (27% Remaining)
+- 🎵 **Background Music** - Audio track with volume control
+- 🎬 **Export/Rendering** - WebM export with MediaRecorder API
+- 🎨 **UI Polish** - Tooltips, loading states, error boundaries
+- ✅ **Testing** - Unit and E2E tests
 
 ---
 
