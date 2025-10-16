@@ -1,0 +1,122 @@
+.ribbonMenu {
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border-medium);
+  flex-shrink: 0;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 2px;
+  background-color: var(--color-bg-accent);
+  padding: 0 var(--spacing-md);
+}
+
+.tab {
+  padding: 8px 20px;
+  background-color: transparent;
+  border: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  background-color: var(--color-secondary-light);
+}
+
+.tabActive {
+  background-color: white;
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Ribbon Content */
+.ribbonContent {
+  display: flex;
+  gap: 1px;
+  padding: var(--spacing-md);
+  background-color: white;
+  min-height: 90px;
+  overflow-x: auto;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--spacing-md);
+  border-right: 1px solid var(--color-border-light);
+  min-width: 120px;
+}
+
+.section:last-child {
+  border-right: none;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: var(--spacing-sm);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 64px;
+}
+
+.actionButton:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-primary-light);
+}
+
+.actionButton:active {
+  transform: scale(0.97);
+  background-color: var(--color-primary-light);
+}
+
+.actionIcon {
+  font-size: 24px;
+}
+
+.actionLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Scrollbar */
+.ribbonContent::-webkit-scrollbar {
+  height: 6px;
+}
+
+.ribbonContent::-webkit-scrollbar-track {
+  background-color: var(--color-bg-accent);
+}
+
+.ribbonContent::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-medium);
+  border-radius: var(--radius-sm);
+}
