@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ExportModal } from '../Export/ExportModal';
 import styles from './RibbonMenu.module.css';
 
 const TABS = [
@@ -79,12 +80,20 @@ const TABS = [
 
 export function RibbonMenu({ activeTab, onTabChange }) {
   const [expandedTab, setExpandedTab] = useState(activeTab);
+  const [showExportModal, setShowExportModal] = useState(false);
 
   const handleTabClick = (tabId) => {
     setExpandedTab(tabId);
     if (onTabChange) {
       onTabChange(tabId);
     }
+  };
+
+  const handleActionClick = (actionId) => {
+    if (actionId === 'export') {
+      setShowExportModal(true);
+    }
+    // TODO: Implement other actions (new, open, save, etc.)
   };
 
   const activeTabData = TABS.find((tab) => tab.id === expandedTab);
@@ -111,7 +120,12 @@ export function RibbonMenu({ activeTab, onTabChange }) {
             <h3 className={styles.sectionTitle}>{section.title}</h3>
             <div className={styles.actions}>
               {section.actions.map((action) => (
-                <button key={action.id} className={styles.actionButton} title={action.label}>
+                <button
+                  key={action.id}
+                  className={styles.actionButton}
+                  title={action.label}
+                  onClick={() => handleActionClick(action.id)}
+                >
                   <span className={styles.actionIcon}>{action.icon}</span>
                   <span className={styles.actionLabel}>{action.label}</span>
                 </button>
@@ -120,6 +134,9 @@ export function RibbonMenu({ activeTab, onTabChange }) {
           </div>
         ))}
       </div>
+
+      {/* Export Modal */}
+      <ExportModal isOpen={showExportModal} onClose={() => setShowExportModal(false)} />
     </div>
   );
 }
