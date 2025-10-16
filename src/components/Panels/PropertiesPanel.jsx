@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { TransitionsPanel } from './TransitionsPanel';
 import { EffectsPanel } from './EffectsPanel';
 import { TextPanel } from './TextPanel';
+import { MusicPanel } from './MusicPanel';
 import styles from './PropertiesPanel.module.css';
 
 export function PropertiesPanel({ activeRibbonTab = 'inicio' }) {
@@ -13,7 +14,13 @@ export function PropertiesPanel({ activeRibbonTab = 'inicio' }) {
       case 'efectos':
         return <EffectsPanel />;
       case 'insertar':
-        return <TextPanel />;
+        return (
+          <div className={styles.splitPanel}>
+            <TextPanel />
+            <div className={styles.divider} />
+            <MusicPanel />
+          </div>
+        );
       default:
         return (
           <div className={styles.defaultPanel}>

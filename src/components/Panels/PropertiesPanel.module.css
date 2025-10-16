@@ -4,6 +4,30 @@
   height: 100%;
 }
 
+.splitPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.splitPanel > div:first-child {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-border-medium);
+  flex-shrink: 0;
+}
+
+.splitPanel > div:last-child {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
 .defaultPanel {
   display: flex;
   flex-direction: column;
