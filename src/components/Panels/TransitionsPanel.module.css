@@ -1,0 +1,99 @@
+.transitionsPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-bg-secondary);
+}
+
+.header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-light);
+  background-color: white;
+}
+
+.title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.transitionsGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  overflow-y: auto;
+}
+
+.transitionItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background-color: white;
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  cursor: grab;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.transitionItem:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.transitionItem:active {
+  cursor: grabbing;
+  transform: translateY(0);
+}
+
+.transitionItemSelected {
+  border-color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
+
+.transitionIcon {
+  font-size: 32px;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.transitionName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0;
+}
+
+.info {
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-accent);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.infoText {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin: 0;
+  text-align: center;
+}
+
+/* Scrollbar */
+.transitionsGrid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.transitionsGrid::-webkit-scrollbar-track {
+  background-color: var(--color-bg-accent);
+}
+
+.transitionsGrid::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-medium);
+  border-radius: var(--radius-sm);
+}

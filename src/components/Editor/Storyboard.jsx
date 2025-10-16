@@ -93,6 +93,27 @@ export function Storyboard() {
     });
   };
 
+  const handleTransitionDrop = (clipId, transitionId) => {
+    dispatch({
+      type: ActionTypes.ADD_TRANSITION_TO_CLIP,
+      payload: {
+        clipId,
+        transitionId,
+        duration: 1, // Default 1s transition
+      },
+    });
+  };
+
+  const handleEffectDrop = (clipId, effectId) => {
+    dispatch({
+      type: ActionTypes.ADD_EFFECT_TO_CLIP,
+      payload: {
+        clipId,
+        effectId,
+      },
+    });
+  };
+
   const formatTotalDuration = () => {
     const totalSeconds = state.clips.reduce((acc, clip) => acc + (clip.duration || 0), 0);
     const minutes = Math.floor(totalSeconds / 60);
@@ -141,6 +162,8 @@ export function Storyboard() {
                   onDelete={handleDeleteClip}
                   onDragStart={handleClipDragStart}
                   onDragEnd={handleClipDragEnd}
+                  onTransitionDrop={handleTransitionDrop}
+                  onEffectDrop={handleEffectDrop}
                 />
                 {index < state.clips.length - 1 && (
                   <div className={styles.clipSeparator}>→</div>

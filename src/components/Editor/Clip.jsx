@@ -1,7 +1,17 @@
 import { useRef } from 'react';
 import styles from './Clip.module.css';
 
-export function Clip({ clip, index, isSelected, onSelect, onDelete, onDragStart, onDragEnd }) {
+export function Clip({ 
+  clip, 
+  index, 
+  isSelected, 
+  onSelect, 
+  onDelete, 
+  onDragStart, 
+  onDragEnd,
+  onTransitionDrop,
+  onEffectDrop 
+}) {
   const clipRef = useRef(null);
 
   const handleDragStart = (e) => {
@@ -19,6 +29,27 @@ export function Clip({ clip, index, isSelected, onSelect, onDelete, onDragStart,
     }
   };
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const transitionId = e.dataTransfer.getData('transitionId');
+    const effectId = e.dataTransfer.getData('effectId');
+    
+    if (transitionId && onTransitionDrop) {
+      onTransitionDrop(clip.id, transitionId);
+    }
+    
+    if (effectId && onEffectDrop) {
+      onEffectDrop(clip.id, effectId);
+    }
+  };
+
   const formatDuration = (duration) => {
     const minutes = Math.floor(duration / 60);
     const seconds = Math.floor(duration % 60);
@@ -33,6 +64,8 @@ export function Clip({ clip, index, isSelected, onSelect, onDelete, onDragStart,
       draggable
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
     >
       <div className={styles.thumbnail}>
         <img src={clip.thumbnail} alt={clip.name} />

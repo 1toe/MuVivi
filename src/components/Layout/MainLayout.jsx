@@ -36,7 +36,7 @@ export function MainLayout() {
 
         {/* Right Sidebar - Properties Panel */}
         <aside className={styles.rightSidebar}>
-          <PropertiesPanel />
+          <PropertiesPanel activeRibbonTab={activeTab} />
         </aside>
       </div>
     </div>
