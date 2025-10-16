@@ -69,6 +69,19 @@ movie-maker-2025/
 
 ---
 
+### 💡 **AI-Assisted Development**
+
+1. **Always attach RULES.md** when asking for code generation
+2. **Reference RFCs** for detailed technical specifications
+3. **Use CHANGELOG.md** to track implementation progress
+4. **Combine multiple files** for context-aware responses:
+   ```
+   @copilot Review #file:RULES.md and #file:CHANGELOG.md 
+           then implement the next pending RFC
+   ```
+
+5. **Maintain the vibe**: Always mention "Windows Movie Maker 2012 aesthetic" in prompts
+
 
 ## 👥 Team
 
