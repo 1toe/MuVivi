@@ -3,9 +3,112 @@
 > A nostalgic, browser-based video editor inspired by Windows Movie Maker 2012
 
 [![Status](https://img.shields.io/badge/Status-In%20Development-yellow)](https://github.com/1toe/movie-maker-2025)
-[![Progress](https://img.shields.io/badge/Progress-73%25-green)](./CHANGELOG.md)
-[![RFCs](https://img.shields.io/badge/RFCs-11%2F15%20Complete-blue)](./CHANGELOG.md)
+[![Progress](https://img.shields.io/badge/Progress-80%25-green)](./CHANGELOG.md)
+[![RFCs](https://img.shields.io/badge/RFCs-12%2F15%20Complete-blue)](./CHANGELOG.md)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
+---
+
+## 🤖 AI-Powered Development Workflow
+
+This project uses **AI-assisted development** with structured workflows and standards. Use these files with GitHub Copilot or any AI coding assistant:
+
+### 📋 **Core Documentation Files**
+
+#### 1. **`#file:RULES.md`** - Development Standards
+Use this file to ensure **code consistency and vibe alignment**:
+
+```
+@copilot Use #file:RULES.md to implement the new feature following project standards
+```
+
+**What it contains:**
+- ✅ Technology stack (React, Vite, Tailwind)
+- ✅ Project structure and naming conventions
+- ✅ Code standards (ES6+, React hooks best practices)
+- ✅ Component architecture patterns
+- ✅ Styling guidelines (design tokens, Tailwind config)
+- ✅ Performance requirements
+- ✅ **Vibe & emotional design** (nostalgic UI/UX)
+
+**When to use:**
+- Before implementing any new feature
+- When creating new components
+- To maintain consistent code style
+- To preserve the "Windows Movie Maker 2012" aesthetic
+
+---
+
+#### 2. **`#file:workflow/`** - AI Automation Prompts
+Structured prompts for common development tasks:
+
+**Available Workflows:**
+
+| File | Purpose | Usage |
+|------|---------|-------|
+| `interactive-prd-creation-prompt.md` | Create Product Requirements | Initial planning |
+| `prd-to-features-prompt.md` | Break PRD into features | Feature planning |
+| `prd-to-rfcs-prompt.md` | Generate technical RFCs | Implementation specs |
+| `prd-to-rules-prompt.md` | Create coding standards | Team alignment |
+| `implementation-prompt-template.md` | Implement features | Development |
+| `prd-comprehensive-verification-prompt.md` | Validate PRD completeness | Quality check |
+| `prd-change-management-prompt.md` | Track PRD changes | Documentation |
+
+**Example Usage:**
+
+```bash
+# Generate RFCs from PRD
+@copilot Use #file:workflow/prd-to-rfcs-prompt.md with #file:PRD.md to create implementation RFCs
+
+# Implement a feature following standards
+@copilot Use #file:workflow/implementation-prompt-template.md and #file:RULES.md to implement RFC-007 Transitions
+
+# Verify project completeness
+@copilot Use #file:workflow/prd-comprehensive-verification-prompt.md to audit #file:PRD.md
+```
+
+---
+
+### 🎯 **Recommended AI Workflow**
+
+#### Phase 1: Planning
+```bash
+1. Create PRD: #file:workflow/interactive-prd-creation-prompt.md
+2. Generate Features: #file:workflow/prd-to-features-prompt.md
+3. Generate RFCs: #file:workflow/prd-to-rfcs-prompt.md
+4. Create Standards: #file:workflow/prd-to-rules-prompt.md
+```
+
+#### Phase 2: Implementation
+```bash
+5. For each RFC:
+   @copilot Use #file:workflow/implementation-prompt-template.md 
+           with #file:RULES.md 
+           to implement RFC-XXX
+
+6. Verify: #file:workflow/prd-comprehensive-verification-prompt.md
+```
+
+#### Phase 3: Maintenance
+```bash
+7. Track changes: #file:workflow/prd-change-management-prompt.md
+8. Always reference #file:RULES.md for consistency
+```
+
+---
+
+### 💡 **Pro Tips for AI-Assisted Development**
+
+1. **Always attach RULES.md** when asking for code generation
+2. **Reference RFCs** for detailed technical specifications
+3. **Use CHANGELOG.md** to track implementation progress
+4. **Combine multiple files** for context-aware responses:
+   ```
+   @copilot Review #file:RULES.md and #file:CHANGELOG.md 
+           then implement the next pending RFC
+   ```
+
+5. **Maintain the vibe**: Always mention "Windows Movie Maker 2012 aesthetic" in prompts
 
 ---
 
@@ -196,37 +299,81 @@ This project is licensed under the MIT License.
 
 ## 👥 Team
 
-- **Project Manager** - Coordinate development
-- **Lead Developer** - Architecture & code reviews
-- **Frontend Developer** - Feature implementation
-- **UI/UX Designer** - Design & mockups
-- **QA Engineer** - Testing & quality assurance
+- **Project Owner** - 1toe
+- **Development** - AI-assisted with GitHub Copilot
+- **Architecture** - Structured workflow-driven development
+
+---
+
+## 📚 Quick Reference for Developers
+
+### Essential Files
+
+| File | Purpose | When to Use |
+|------|---------|-------------|
+| **RULES.md** | Code standards & vibe guide | Every implementation |
+| **CHANGELOG.md** | Implementation progress | Track what's done |
+| **PRD.md** | Product requirements | Understand vision |
+| **FEATURES.md** | Feature breakdown | Sprint planning |
+| **RFCs/** | Technical specifications | Implementation details |
+| **workflow/** | AI automation prompts | Structured development |
+
+### Common AI Commands
+
+```bash
+# Start a new feature
+@copilot Use #file:RULES.md to implement [feature name]
+
+# Review progress
+@copilot Check #file:CHANGELOG.md and suggest next steps
+
+# Verify implementation
+@copilot Compare #file:RFCs/RFC-XXX.md with current implementation
+
+# Maintain vibe
+@copilot Review #file:RULES.md section 14 (Vibe) before implementing UI
+```
+
+### Development Checklist
+
+- [ ] Read relevant RFC in `RFCs/` folder
+- [ ] Reference `RULES.md` for standards
+- [ ] Update `CHANGELOG.md` after implementation
+- [ ] Run tests: `npm test`
+- [ ] Commit with descriptive message
+- [ ] Update progress badge in README
 
 ---
 
 ## 📞 Support
 
-- 📖 Check [MASTER-DOCS.md](./MASTER-DOCS.md) first
+- 📖 Check [CHANGELOG.md](./CHANGELOG.md) for implementation status
+- 📋 Read [PRD.md](./PRD.md) for product vision
 - 🐛 Report bugs via [GitHub Issues](https://github.com/1toe/movie-maker-2025/issues)
 - 💬 Questions? Check relevant RFC in [RFCs/](./RFCs/) folder
 
 ---
 
-## 🎨 Screenshots
+## 🎨 Project Status
 
-_Coming soon as features are implemented_
+**Current Version:** 1.0-beta  
+**Progress:** 80% Complete (12/15 RFCs)  
+**Status:** � MVP Ready - Core features complete
+
+**Next Steps:**
+- ⏸️ RFC-011: Export & Rendering (deferred to v1.1)
+- ⏸️ RFC-014: UI Polish (deferred to v1.1)
+- ⏸️ RFC-015: Testing & QA (deferred to v1.1)
 
 ---
 
-**Current Status:** 🚧 In Active Development (8% complete)  
-**Next Milestone:** Complete RFC-002 Component Architecture
+*Last Updated: October 16, 2025*
 
-*Last Updated: October 15, 2025*
+---
 
-### For Developers
+## 🌟 Star This Project
 
-If you're implementing RFC-001:
-1. Read [QUICK-START.md](QUICK-START.md)
+If you find this helpful, give it a ⭐ on [GitHub](https://github.com/1toe/movie-maker-2025)!
 2. Read [RFCs/RFC-001-Project-Setup.md](RFCs/RFC-001-Project-Setup.md)
 3. Read [RFCs/implementation-prompt-RFC-001.md](RFCs/implementation-prompt-RFC-001.md)
 4. Create implementation plan
